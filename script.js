@@ -1,87 +1,53 @@
-function computerPlay(){
-    const computerOptions = ["rock", "paper", "scissors"] ;
+function computerSelection() {
+    const computerOptions = ["rock", "paper", "scissors"];
     const computerChoice = computerOptions[(Math.floor(Math.random() * computerOptions.length))];
     return computerChoice;
-}
-
-function playGame(player, computer,round){
-  
-     if ( player == computer)
-     {
-        return `Round No. ${round} is a tie`;
-        
-     }
-     else if ( (player == "rock" && computer == "scissors") || (player == "paper" && computer == "rock") || (player == "scissors" && computer == "paper") )
-     {
-         playerCounter++;
-         return `You Win Round No. ${round}! ${player} beats ${computer}` ;
-         
-     }
-     else
-     {
-        computerCounter++;
-         return `You Lose Round No. ${round}! ${computer} beats ${player}` ;
-        
-     }
 
 }
 
-function game(){
 
-    let result,i,n;
 
-    n = prompt("Enter the number of rounds you want to play");
+let computerChoice = computerSelection();
 
-    for ( i = 1; i <=n; i++) 
-    { 
-    // Ask player to choose
-    let playerSelection = prompt("Rock, Paper, Scissors?");
-    playerSelection = playerSelection.toLowerCase();
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+let resultDiv = document.querySelector(".result")
 
-    //computers choice
-    const computerSelection = computerPlay();
-    console.log(`Computer Selected ${computerSelection}`);
+let computerDiv = document.createElement("div");
+computerDiv.style.textAlign = "center";
+document.body.insertBefore(computerDiv, resultDiv);
 
-    //Function call to play the game
-     result = playGame(playerSelection, computerSelection,i);
-     console.log(result);
-    }
+rock.addEventListener("click", () => {
+    playGame(rock.textContent.toLowerCase(), computerChoice);
+});
+paper.addEventListener("click", () => {
+    playGame(paper.textContent.toLowerCase(), computerChoice);
+});
+scissors.addEventListener("click", () => {
+    playGame(scissors.textContent.toLowerCase(), computerChoice);
+});
 
-    // Displaying Final results of the game
-    console.log(`Final Scores: \n Your Score: ${playerCounter} \n Computer's Score: ${computerCounter}`);
 
-    if(playerCounter == computerCounter)
+function playGame(player, computer) {
+
+    computerDiv.textContent = `Opponent chose ${computer}`;
+
     {
-        console.log("Tie Game!");
+        if (player == computer) {
+            resultDiv.textContent = `It's a tie`;
+
+        } else if ((player == "rock" && computer == "scissors") || (player == "paper" && computer == "rock") || (player == "scissors" && computer == "paper")) {
+            resultDiv.textContent = `You Win  ${player} beats ${computer}`;
+
+        } else {
+
+            resultDiv.textContent = `You Lose ${computer} beats ${player}`;
+
+        }
     }
-    else if (playerCounter > computerCounter)
-    {
-        console.log("CONGRATULATIONS!!!! YOU WON THE GAME!");
-    }
-    else{
-        console.log("Sorry... You lost the game.");
-    }
- 
 }
 
 
-let playerCounter = 0 ;
-let computerCounter = 0 ;
-
-game();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
+// let playerCounter = 0;
+// let computerCounter = 0;
