@@ -1,14 +1,3 @@
-function computerSelection() {
-    const computerOptions = ["rock", "paper", "scissors"];
-    const computerChoice = computerOptions[(Math.floor(Math.random() * computerOptions.length))];
-    return computerChoice;
-
-}
-
-
-
-let computerChoice = computerSelection();
-
 const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
@@ -18,14 +7,29 @@ let computerDiv = document.createElement("div");
 computerDiv.style.textAlign = "center";
 document.body.insertBefore(computerDiv, resultDiv);
 
+function computerSelection() {
+    const computerOptions = ["rock", "paper", "scissors"];
+    const computerChoice = computerOptions[(Math.floor(Math.random() * computerOptions.length))];
+    return computerChoice;
+
+}
+
+let computerChoice = computerSelection();
+
+
 rock.addEventListener("click", () => {
-    playGame(rock.textContent.toLowerCase(), computerChoice);
+    let rockText = rock.textContent.trim().toLowerCase();
+    playGame(rockText, computerChoice);
 });
+
 paper.addEventListener("click", () => {
-    playGame(paper.textContent.toLowerCase(), computerChoice);
+    let paperText = paper.textContent.trim().toLowerCase();
+    playGame(paperText, computerChoice);
 });
+
 scissors.addEventListener("click", () => {
-    playGame(scissors.textContent.toLowerCase(), computerChoice);
+    let scissorsText = scissors.textContent.trim().toLowerCase();
+    playGame(scissorsText, computerChoice);
 });
 
 
@@ -33,19 +37,18 @@ function playGame(player, computer) {
 
     computerDiv.textContent = `Opponent chose ${computer}`;
 
-    {
-        if (player == computer) {
-            resultDiv.textContent = `It's a tie`;
+    if (player == computer) {
+        resultDiv.textContent = `It's a tie`;
 
-        } else if ((player == "rock" && computer == "scissors") || (player == "paper" && computer == "rock") || (player == "scissors" && computer == "paper")) {
-            resultDiv.textContent = `You Win  ${player} beats ${computer}`;
+    } else if ((player == "rock" && computer == "scissors") || (player == "paper" && computer == "rock") || (player == "scissors" && computer == "paper")) {
+        resultDiv.textContent = `You Win  ${player} beats ${computer}`;
 
-        } else {
+    } else {
 
-            resultDiv.textContent = `You Lose ${computer} beats ${player}`;
+        resultDiv.textContent = `You Lose ${computer} beats ${player}`;
 
-        }
     }
+
 }
 
 
