@@ -10,6 +10,8 @@ winnerDiv.classList.add("winner");
 let scoreDiv = document.createElement("div");
 scoreDiv.classList.add("score");
 
+<<
+<< << < HEAD
 let refresh = document.createElement("div");
 refresh.classList.add("new-game");
 
@@ -18,14 +20,35 @@ let computerCounter = 0;
 
 playerSelection.forEach(player => {
 
-    player.addEventListener("click", () => {
-        const playerChoice = player.textContent.trim().toLowerCase();
-        const computerChoice = computerSelection();
-        playGame(playerChoice, computerChoice);
-        displayWinner(playerCounter, computerCounter);
+        player.addEventListener("click", () => {
+            const playerChoice = player.textContent.trim().toLowerCase();
+            const computerChoice = computerSelection();
+            playGame(playerChoice, computerChoice);
+            displayWinner(playerCounter, computerCounter);
+        })
+
     })
 
-})
+    ===
+    === =
+    let playerCounter = 0;
+let computerCounter = 0;
+
+playerSelection.forEach(player => {
+
+        player.addEventListener("click", () => {
+            const playerChoice = player.textContent.trim().toLowerCase();
+            const computerChoice = computerSelection();
+            playGame(playerChoice, computerChoice);
+            displayWinner(playerCounter, computerCounter);
+        })
+
+    })
+
+
+
+    >>>
+    >>> > e4973d5820337971bf0986b91fd60bc05d41e67d
 
 function computerSelection() {
     const computerOptions = ["rock", "paper", "scissors"];
@@ -39,10 +62,17 @@ function newGame() {
 
 function playGame(player, computer) {
 
+    <<
+    << << < HEAD
     if (playerCounter < 5 && computerCounter < 5) {
         computerDiv.textContent = `Opponent chose ${computer}`;
         document.body.insertBefore(computerDiv, resultDiv);
-        computerDiv.style.textAlign = "center";
+        computerDiv.style.textAlign = "center"; ===
+        === =
+        computerDiv.textContent = `Opponent chose ${computer}`;
+        document.body.insertBefore(computerDiv, resultDiv);
+        computerDiv.style.textAlign = "center"; >>>
+        >>> > e4973d5820337971bf0986b91fd60bc05d41e67d
 
         if (player == computer) {
             resultDiv.textContent = `It's a tie`;
@@ -50,9 +80,14 @@ function playGame(player, computer) {
         } else if ((player == "rock" && computer == "scissors") || (player == "paper" && computer == "rock") || (player == "scissors" && computer == "paper")) {
             resultDiv.textContent = `You Win  ${player} beats ${computer}`;
             playerCounter++;
+        } else if ((player == "rock" && computer == "scissors") || (player == "paper" && computer == "rock") || (player == "scissors" && computer == "paper")) {
+            resultDiv.textContent = `You Win  ${player} beats ${computer}`;
+            playerCounter++;
 
         } else {
 
+            resultDiv.textContent = `You Lose ${computer} beats ${player}`;
+            computerCounter++;
             resultDiv.textContent = `You Lose ${computer} beats ${player}`;
             computerCounter++;
 
