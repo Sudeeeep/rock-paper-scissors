@@ -19,7 +19,7 @@ let computerCounter = 0;
 playerSelection.forEach(player => {
 
     player.addEventListener("click", () => {
-        const playerChoice = player.textContent.trim().toLowerCase();
+        const playerChoice = player.dataset.symbol.trim().toLowerCase();
         const computerChoice = computerSelection();
         if (playerCounter < 5 && computerCounter < 5) {
             playGame(playerChoice, computerChoice);
